@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="美術系學生個人網站，整理學習歷程與藝術創作作品。">
+  <title>個人作品集｜美術系學生</title>
+  <style>
+    :root{
+      --paper:#f4f0e8; --paper-deep:#e9e1d5; --ink:#25251f;
+      --muted:#716e65; --accent:#a64f39; --olive:#68705a;
+      --line:#d5cdbf; --white:#fffdf8; --serif:Georgia,"Noto Serif TC",serif;
+      --sans:system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8}
+    a{color:inherit}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+    .site-header{position:sticky;top:0;z-index:10;background:rgba(244,240,232,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+    .nav-wrap{max-width:1180px;margin:auto;padding:0 28px;min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-family:var(--serif);font-size:19px;font-weight:700;text-decoration:none;letter-spacing:.04em}
+    .nav-links{display:flex;gap:27px;align-items:center}
+    .nav-links a{text-decoration:none;font-size:14px;color:var(--muted)}
+    .nav-links a:hover{color:var(--accent)}
+    .menu-toggle{display:none;border:1px solid var(--line);background:transparent;padding:8px 12px;min-height:44px;color:var(--ink);font:inherit}
+    main{overflow:hidden}
+    .hero{max-width:1180px;margin:auto;padding:92px 28px 100px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:64px;align-items:center}
+    .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-family:var(--serif);font-size:clamp(42px,6.5vw,78px);line-height:1.12;letter-spacing:-.035em;margin:18px 0 24px;font-weight:500}
+    .hero-copy{max-width:590px;color:var(--muted);font-size:18px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:34px;color:var(--muted);font-size:14px}
+    .hero-meta span::before{content:"—";color:var(--accent);margin-right:9px}
+    .art-frame{position:relative;min-height:390px;background:var(--paper-deep);display:grid;place-items:center;overflow:hidden}
+    .art-frame::before,.art-frame::after{content:"";position:absolute;border:1px solid rgba(37,37,31,.25);border-radius:50%;width:72%;aspect-ratio:1}
+    .art-frame::after{width:48%;border-color:rgba(166,79,57,.5);transform:rotate(35deg) scaleX(.62)}
+    .art-mark{font-family:var(--serif);font-size:clamp(90px,15vw,180px);font-style:italic;color:var(--accent);line-height:1;z-index:1}
+    .art-caption{position:absolute;bottom:18px;left:20px;font-size:11px;letter-spacing:.16em;color:var(--muted)}
+    .section{padding:86px 28px}
+    .section-inner{max-width:1180px;margin:auto}
+    .section-heading{display:grid;grid-template-columns:180px 1fr;gap:30px;border-top:1px solid var(--line);padding-top:22px;margin-bottom:44px}
+    .section-number{font-family:var(--serif);font-size:14px;color:var(--accent);letter-spacing:.12em}
+    h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:500;line-height:1.2;margin:0}
+    .section-intro{max-width:620px;color:var(--muted);margin:12px 0 0}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding-left:210px}
+    .about-grid p{max-width:540px}
+    .note{border-left:2px solid var(--accent);padding:4px 0 4px 22px;color:var(--muted)}
+    .education{background:var(--white)}
+    .education-row{display:grid;grid-template-columns:180px 1fr 1fr;gap:30px;padding:25px 0;border-bottom:1px solid var(--line);align-items:start}
+    .education-year{font-family:var(--serif);font-size:19px;color:var(--accent)}
+    .education-row h3{font-size:19px;margin:0 0 5px}
+    .education-row p{color:var(--muted);margin:0}
+    .works{background:var(--paper)}
+    .works-empty{margin-left:210px;padding:38px;border:1px dashed #bcb3a5;max-width:760px}
+    .works-empty strong{display:block;font-family:var(--serif);font-size:25px;font-weight:500;margin-bottom:8px}
+    .works-empty p{color:var(--muted);margin:0}
+    .contact{background:#292a24;color:#f4f0e8}
+    .contact .section-heading{border-color:#55564e}
+    .contact .section-number{color:#d49a7f}
+    .contact .section-intro{color:#c4c0b5}
+    .contact-content{margin-left:210px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .contact-content p{margin:0;color:#c4c0b5}
+    .contact-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 20px;border:1px solid #b9b2a5;text-decoration:none}
+    .contact-link:hover{background:#f4f0e8;color:#292a24}
+    footer{padding:22px 28px;text-align:center;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+    @media(max-width:760px){
+      .nav-wrap{padding:0 20px}.menu-toggle{display:block}
+      .nav-links{display:none;position:absolute;top:69px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);padding:12px 20px 20px;flex-direction:column;align-items:stretch;gap:0}
+      .nav-links.open{display:flex}.nav-links a{padding:12px 4px;border-bottom:1px solid var(--line)}
+      .hero{padding:60px 22px 70px;grid-template-columns:1fr;gap:38px}
+      .art-frame{min-height:280px}
+      .section{padding:64px 22px}
+      .section-heading{grid-template-columns:1fr;gap:12px;margin-bottom:30px}
+      .about-grid{padding-left:0;grid-template-columns:1fr;gap:18px}
+      .education-row{grid-template-columns:1fr;gap:6px}
+      .works-empty,.contact-content{margin-left:0}
+      .works-empty{padding:25px}
+      .contact-content{align-items:flex-start;flex-direction:column}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top">個人作品集</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">選單</button>
+      <nav class="nav-links" id="site-nav" aria-label="主要導覽">
+        <a href="#about">關於我</a>
+        <a href="#education">學習歷程</a>
+        <a href="#works">作品集</a>
+        <a href="#contact">聯絡方式</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <div class="eyebrow">ART · STUDY · PORTFOLIO</div>
+        <h1 id="hero-title">用創作，<br>整理看見世界的方式。</h1>
+        <p class="hero-copy">你好，我是國立臺灣師範大學美術學系三年級學生。這個網站記錄我的學習歷程與創作，整理每一次觀察、嘗試與累積。</p>
+        <div class="hero-meta">
+          <span>國立臺灣師範大學</span>
+          <span>美術學系・三年級</span>
+        </div>
+      </div>
+      <div class="art-frame" role="img" aria-label="以抽象圓形與字母構成的作品集主視覺">
+        <div class="art-mark">A.</div>
+        <div class="art-caption">A PERSONAL ART JOURNAL</div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-number">01 / ABOUT</div>
+          <div><h2>關於我</h2><p class="section-intro">從學習出發，持續累積自己的創作語言。</p></div>
+        </div>
+        <div class="about-grid">
+          <p>目前就讀國立臺灣師範大學美術學系三年級。這裡是個人學習與創作的整理空間，將隨著作品與經驗持續更新。</p>
+          <p class="note">每件作品都是一段思考的紀錄。透過作品集，可以逐步看見不同階段的練習、媒材探索與創作成果。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section education" id="education">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-number">02 / EDUCATION</div>
+          <div><h2>學習歷程</h2><p class="section-intro">目前可確認的學歷資訊。</p></div>
+        </div>
+        <div class="education-row">
+          <div class="education-year">目前就讀</div>
+          <div><h3>國立臺灣師範大學</h3><p>美術學系</p></div>
+          <div><p>大學部・三年級</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section works" id="works">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-number">03 / SELECTED WORKS</div>
+          <div><h2>作品集</h2><p class="section-intro">依創作主題、媒材或課程分類，呈現作品與創作過程。</p></div>
+        </div>
+        <div class="works-empty">
+          <strong>作品，正在累積中。</strong>
+          <p>目前尚未提供作品圖片與作品說明，因此此區先保留為作品展示位置。加入作品後，可在每件作品旁補上名稱、年份、媒材與創作理念。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="section-number">04 / CONTACT</div>
+          <div><h2>聯絡方式</h2><p class="section-intro">歡迎透過適合的方式交流作品與創作想法。</p></div>
+        </div>
+        <div class="contact-content">
+          <p>尚未提供公開聯絡資訊。</p>
+          <a class="contact-link" href="#top">回到首頁 ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>個人學習與創作紀錄</footer>
+  <script>
+    (() => {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('#site-nav');
+      toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        nav.classList.toggle('open', !isOpen);
+      });
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
